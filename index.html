@@ -1,0 +1,349 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-title" content="한음 일본어" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#547ef5" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>한음 일본어</title>
+
+    <link rel="icon" href="images/haneum_logo.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="normalize.css">
+
+    <script defer src="data/listen.js"></script>
+    <script defer src="data/info.js"></script>
+    <script defer src="data/pron.js"></script>
+    <script defer src="data/tapgame.js"></script>
+    <script defer src="data/sentence.js"></script>
+    <script defer src="data/voca.js"></script>
+    <script defer src="data/video.js"></script>
+
+    <script defer src="taskport.min.js"></script>
+    <script defer src="youtube.js"></script>
+    <script defer src="elm.js"></script>
+    <script defer src="component.js"></script>
+
+    <script defer src="main.js"></script>
+
+    <style>
+        @font-face {
+            font-family: 'Spoqa Han Sans Neo';
+            src: url('fonts/SpoqaHanSansNeo-Medium.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'Spoqa Han Sans JP';
+            src: url('fonts/SpoqaHanSansJPRegular.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: 'Kanji Stroke Orders';
+            src: url('fonts/KanjiStrokeOrders.woff2') format('woff2');
+        }
+
+        html {
+            -webkit-text-size-adjust: none;
+            text-size-adjust: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            /*position: fixed;*/
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            user-select: none;
+            background-color: #fff;
+            /*overflow: hidden;*/
+        }
+
+        * {
+            font-family: 'Spoqa Han Sans Neo', 'Spoqa Han Sans JP';
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-user-drag: none;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+            -webkit-touch-callout: none;
+            /* box-shadow: 1px 1px 10px #00000022; */
+            /* touch-action: pan-y; */
+        }
+
+        input, textarea {
+            -moz-user-select: auto;
+            -webkit-user-select: auto;
+            -ms-user-select: auto;
+            user-select: auto;
+        }
+
+
+        float-div {
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        button {
+            background-color: white;
+            border: none;
+            border-radius: 3px;
+            margin: 2px;
+        }
+
+        #debug-str{
+            position: fixed;
+            top: 5px;
+            left: 5px;
+            font-size: 30px;
+            z-index: 9999;
+            display: none;
+            pointer-events: none;
+        }
+
+        .wave-node {
+          animation-duration: 0.5s;
+          animation-name: wave-anim;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+        }
+
+        @keyframes wave-anim {
+          from {
+            transform: translateY(0px);
+          }
+
+          to {
+            transform: translateY(3px);
+          }
+        }
+
+        .pulse-node {
+          animation-duration: 1s;
+          animation-name: pulse;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+        }
+
+        @keyframes pulse {
+          from {
+            color: #fff;
+          }
+
+          to {
+            color: #777;
+          }
+        }
+
+        .tap-pulse-node {
+          animation-duration: 0.7s;
+          animation-name: tap-pulse;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+          animation-fill-mode: both;
+          animation-timing-function:ease-in-out;
+        }
+
+        @keyframes tap-pulse {
+          from {
+            color: #ccc;
+          }
+
+          to {
+            color: #333;
+          }
+        }
+
+
+        .wrong-tap-pulse-node {
+          animation-duration: 0.7s;
+          animation-name: wrong-tap-pulse;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+          animation-fill-mode: both;
+          animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+        }
+
+        @keyframes wrong-tap-pulse {
+          from {
+            color: #FF7777;
+          }
+
+          to {
+            color: #ccc;
+          }
+        }
+
+
+        .up-down-anim-node {
+          animation-duration: 0.7s;
+          animation-name: up-down-anim;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+          animation-fill-mode: both;
+          animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+        }
+
+        @keyframes up-down-anim {
+          from {
+            transform: translate(0px, 1px);
+          }
+
+          to {
+            transform: translate(0px, -2px);
+          }
+        }
+
+        .bounce-node {
+          animation-duration: 0.7s;
+          animation-name: scale-easeOutBounce;
+          animation-fill-mode: both;
+          transform-origin: right;
+        }
+
+        @keyframes scale-easeOutBounce {
+            0% {
+                transform: scale(1.0);
+            }
+
+            12% {
+                transform: scale(1.011);
+            }
+
+            24% {
+                transform: scale(1.044);
+            }
+
+            36% {
+                transform: scale(1.098);
+            }
+
+            54% {
+                transform: scale(1.075);
+            }
+
+            74% {
+                transform: scale(1.098);
+            }
+
+            82% {
+                transform: scale(1.094);
+            }
+
+            92% {
+                transform: scale(1.099);
+            }
+
+            96% {
+                transform: scale(1.098);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+
+        .shadow {
+          -webkit-filter: drop-shadow( 5px 5px 30px rgba(0, 0, 0, .3));
+          filter: drop-shadow( 5px 5px 30px rgba(0, 0, 0, .3));
+          /* Similar syntax to box-shadow */
+        }
+
+
+        .shake-node {
+          animation-duration: 1s;
+          animation-name: shake-anim;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+          animation-fill-mode: both;
+          animation-timing-function:ease-in-out;
+        }
+
+        @keyframes shake-anim {
+          from {
+            transform: rotate(5deg)
+          }
+
+          to {
+            transform: rotate(-5deg)
+          }
+        }
+
+        iframe {
+            border: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+
+        ruby > rt {
+            font-size: 65%;
+            text-align: start;
+        }
+
+        .skip-pulse-node {
+          animation-duration: 0.7s;
+          animation-name: skip-pulse;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+          animation-fill-mode: both;
+          animation-timing-function:ease-in-out;
+        }
+
+        @keyframes skip-pulse {
+          from {
+            background-color: #666;
+          }
+
+          to {
+            background-color: #999;
+          }
+        }
+
+        button, input[type=button], input[type=submit], input[type=reset] {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+        }
+
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 5px solid #FFF;
+            border-bottom-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+
+    </style>
+
+
+</head>
+
+<body>
+    <div id="debug-str"></div>
+    <div id="myapp"></div>
+    <div style="display:none;"><img src="images/arrow-back.webp"><img src="images/bg.webp"><img src="images/blueCircle.webp"><img src="images/bookmark.webp"><img src="images/bookmark-outline.webp"><img src="images/complete.webp"><img src="images/han-btn.webp"><img src="images/hira-btn.webp"><img src="images/infoBtn.webp"><img src="images/leftBtn.webp"><img src="images/left-btn.webp"><img src="images/material-cancel.webp"><img src="images/material-close.webp"><img src="images/redCircle.webp"><img src="images/rightBtn.webp"><img src="images/right-btn.webp"><img src="images/should_complete.webp"><img src="images/shuffle-off.webp"><img src="images/shuffle-on.webp"><img src="images/speak-blue.webp"><img src="images/stage-listen.webp"><img src="images/stage-listen-done.webp"><img src="images/stage-pron.webp"><img src="images/stage-pron-done.webp"><img src="images/stage-sentence.webp"><img src="images/stage-sentence-done.webp"><img src="images/stage-tapgame.webp"><img src="images/stage-tapgame-done.webp"><img src="images/stage-wordbook.webp"><img src="images/wave.webp"><img src="images/white-bookmark.webp"><img src="images/white-bookmark-filled.webp"></div>
+
+</body>
+
+</html>
