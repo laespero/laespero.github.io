@@ -309,7 +309,7 @@ customElements.define('card-drag-area',
 
             this.addEventListener("pointermove", (evt => {
                 try {
-                    if(evt.pointerType == "mouse" && evt.pressure == 0) return;
+                    if(evt.pointerType == "mouse" && evt.buttons == 0) return;
                     var tar = evt.currentTarget;
                     if (tar.isDispatched) return;
 
@@ -354,7 +354,7 @@ customElements.define('voca-seekbar',
 
             this.setStyle();
             this.addEventListener("pointermove", (evt => {
-                if(evt.pointerType == "mouse" && evt.pressure == 0) return;
+                if(evt.pointerType == "mouse" && evt.buttons == 0) return;
 
                 var tar = evt.currentTarget;
                 var rect = tar.getBoundingClientRect();
@@ -404,7 +404,7 @@ customElements.define('gesture-div',
 
             this.addEventListener("pointermove", (evt => {
                 try {
-                    if(evt.pointerType == "mouse" && evt.pressure == 0) return;
+                    if(evt.pointerType == "mouse" && evt.buttons == 0) return;
 
                     var tar = evt.currentTarget;
                     if (tar.isDispatched) return;
@@ -570,7 +570,7 @@ customElements.define('write-canvas',
 
             canvas.addEventListener('pointermove', e => { try {
                 e.preventDefault();
-                if(e.pointerType == "mouse" && e.pressure == 0) return;
+                if(e.pointerType == "mouse" && e.buttons == 0) return;
 
                 update(e);
                 draw();
