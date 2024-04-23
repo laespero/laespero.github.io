@@ -121,12 +121,22 @@ customElements.define('float-div',
             this._isDestroyState = false;
             this._isShortDestroy = false;
             this.dur = 200;
+
         }
 
         tick(now) {
             if(this.isAlive) requestAnimationFrame((t) => { this.tick(t); });
 
             if(!this._targetId) return;
+
+            if(!this.p_targetId) {
+                  if(this.startTime) {
+                     const p = (now-this.startTime)/100;
+                     this.style.opacity = p;
+                  }
+            }else{
+                this.style.opacity = 1;
+            }
 
             if(!this.x_isDestroyState && this._isDestroyState){
                 this.destroyStartTime = now;
@@ -151,10 +161,9 @@ customElements.define('float-div',
                 }
             }
 
-
             if(!this.x_targetId) {
                 let cs = this.currentStyleVal();
-                cs.left = -300;
+                cs.left -= 100;
 
                 this.styleValA = Object.assign({},cs);
                 this.styleValT = Object.assign({},cs);
@@ -165,10 +174,11 @@ customElements.define('float-div',
                 this.styleValA = this.styleValT;
                 this.startTime = now;
             }
-            else if(this.x_orderIdx != this._orderIdx) {
+            else if(this.x_orderIdx != this._orderIdx) { // 순서 변경
                 this.styleValA = this.styleValT;
                 this.startTime = now;
             }
+
 
             this.styleValB = this.currentStyleVal();
 
@@ -183,6 +193,7 @@ customElements.define('float-div',
         }
 
         connectedCallback() {
+            this.style.opacity = 0;
             requestAnimationFrame((t) => { this.tick(t); });
             this.isAlive = true;
         }
@@ -217,14 +228,18 @@ customElements.define('float-div',
 
         currentStyleVal() {
             const o = {left:0, top:0, width:0, height:0, fontSize:0, borderRadius:0};
+
+            const oEle = document.getElementById("float-origin");
             const ele = document.getElementById(this._targetId);
 
-            if(ele){
+            if(oEle && ele){
+                const oRect = oEle.getBoundingClientRect();
                 const rect = ele.getBoundingClientRect();
+
                 const compStyles = window.getComputedStyle(ele);
 
-                o.left = rect.left;
-                o.top = rect.top;
+                o.left = rect.left - oRect.left;
+                o.top = rect.top - oRect.top;
                 o.width = rect.width;
                 o.height = rect.height;
                 o.fontSize = parseFloat(compStyles.getPropertyValue("font-size"));
@@ -235,7 +250,7 @@ customElements.define('float-div',
         }
 
         updateStyle(now, o) {
-            this.style.position = "fixed";
+            this.style.position = "absolute";
             this.style.left = o.left + 'px';
             this.style.top = o.top + 'px';
             this.style.width = o.width + 'px';
@@ -285,6 +300,7 @@ customElements.define('float-div',
         }
 
         set targetId(val) {
+            this.p_targetId = this._targetId;
             this._targetId = val;
         }
 
