@@ -132,7 +132,8 @@ customElements.define('float-div',
             if(!this.p_targetId) {
                   if(this.startTime) {
                      const p = (now-this.startTime)/100;
-                     this.style.opacity = p;
+                     if(p>1) this.style.opacity = 1;
+                     else this.style.opacity = p;
                   }
             }else{
                 this.style.opacity = 1;
