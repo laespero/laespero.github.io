@@ -79,7 +79,7 @@ app.ports.pushUrl.subscribe(function(url) {
 });
 //// URl 제어
 
-var dataVersion = 6;
+var dataVersion = 7;
 if (localStorage.getItem("data-version") != dataVersion) {
     localStorage.clear();
     localStorage.setItem("data-version", dataVersion);
