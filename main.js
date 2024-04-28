@@ -142,6 +142,15 @@ app.ports.newTab.subscribe( url => location.href = url);
 
 app.ports.sendToPlayer.subscribe(function (o) {
     try {
+        if(o.tag == "scrollReset") {
+            try {
+            const scrollElement = document.getElementById(o.data);
+            scrollElement.style.overflow = 'hidden';
+            scrollElement.scrollTop = 0;
+            scrollElement.scrollLeft = 0;
+            scrollElement.style.overflow = 'auto';
+            } catch {}
+        }
         if (o.tag == "start") {
             app.ports.fromPlayer.send({ tag: "start", data: data });
         }

@@ -562,7 +562,7 @@ customElements.define('write-canvas',
             ctx.canvas.height = 200;
 
             let isDraw = false;
-            let coord = { px: 0, py: 0, cx: 0, cy: 0 };
+            let coord = { px: -1, py: -1, cx: -1, cy: -1 };
 
             function toPos(e) {
                 const offset = e.target.getBoundingClientRect();
@@ -604,6 +604,14 @@ customElements.define('write-canvas',
             });
 
             function update(e) {
+                if(coord.cx == -1) {
+                    const pos = toPos(e);
+                    coord.px = pos.x;
+                    coord.py = pos.y;
+                    coord.cx = pos.x;
+                    coord.cy = pos.y;
+                }
+
                 coord.px = coord.cx;
                 coord.py = coord.cy;
 
