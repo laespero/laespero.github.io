@@ -494,7 +494,15 @@ function loadVideo(vid, isLoop) {
                         //player.set_api('channelBanners', 'track', {});
                     },
                     'time_change': function(){
-                        app.ports.fromPlayer.send({ tag: "playerTime", data: parseInt(player.get_current_time() * 1000) });
+                        try {
+                            if (player.player_state === -1) {
+
+                            }
+                            else {
+                                app.ports.fromPlayer.send({ tag: "playerTime", data: parseInt(player.get_current_time() * 1000) });
+                            }
+                         }
+                         catch {}
                     }
                 }
             });
