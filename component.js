@@ -319,6 +319,8 @@ customElements.define('card-drag-area',
                     tar.startX = evt.screenX;
                     tar.startY = evt.screenY;
                     tar.isDispatched = false;
+
+                    this.startId = evt.target.id;
                 } catch (err) {
                     console.log(err);
                 }
@@ -330,8 +332,10 @@ customElements.define('card-drag-area',
                     var tar = evt.currentTarget;
                     if (tar.isDispatched) return;
 
-                    tar.dispatchEvent(new CustomEvent('card-drag',
-                        { detail: (evt.screenX - tar.startX) + (evt.screenY - tar.startY) }));
+                    if(!evt.target.id.includes("char")) {
+                        tar.dispatchEvent(new CustomEvent('card-drag',
+                            { detail: (evt.screenX - tar.startX) + (evt.screenY - tar.startY) }));
+                    }
                 } catch (err) {
                     console.log(err);
                 }
@@ -340,7 +344,13 @@ customElements.define('card-drag-area',
             this.addEventListener("pointerup", (evt => {
                 try {
                     var tar = evt.currentTarget;
-                    tar.dispatchEvent(new CustomEvent('card-drag-end'));
+                    if(this.startId && this.startId.includes("char") && this.startId === evt.target.id) {
+                        tar.dispatchEvent(new CustomEvent('card-drag-end', { detail:  evt.target.id}));
+                    }
+                    else {
+                        tar.dispatchEvent(new CustomEvent('card-drag-end', { detail:  "NOPE"}));
+                    }
+
                 } catch (err) {
                     console.log(err);
                 }

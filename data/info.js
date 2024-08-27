@@ -1,5 +1,7 @@
 var info =
-[{"videoId":"CkvWJNt77mU","name":"개다(맑은 날)","songNameJp":"晴る","songNameKor":"개다(맑은 날)","artistJp":"ヨルシカ","artistKor":"요루시카","info":"맑은 날(晴る)은 2024년 1월 5일에 발매된 요루시카의 디지털 싱글. 애니메이션 \"장송의 프리렌\"의 오프닝곡으로 타이업되었다.","aVid":"ZFIzSV37wD8","bVid":"4SnBB5TAiMc"}
+[{"videoId":"QjrkrVmC-8M","name":"라일락","songNameJp":"ライラック","songNameKor":"라일락","artistJp":"Mrs. GREEN APPLE","artistKor":"미세스 그린 애플","info":"Mrs. GREEN APPLE의 디지털 싱글. 애니메이션 \"망각 배터리\"의 OP로 타이업되었다.","aVid":"ZerL65YcW_Y","bVid":"BL9TAEAO_pE"}
+
+,{"videoId":"CkvWJNt77mU","name":"개다(맑은 날)","songNameJp":"晴る","songNameKor":"개다(맑은 날)","artistJp":"ヨルシカ","artistKor":"요루시카","info":"맑은 날(晴る)은 2024년 1월 5일에 발매된 요루시카의 디지털 싱글. 애니메이션 \"장송의 프리렌\"의 오프닝곡으로 타이업되었다.","aVid":"ZFIzSV37wD8","bVid":"4SnBB5TAiMc"}
 
 ,{"videoId":"fMiJTwnKe-M","name":"사랑을 하고 있는 것 같아","songNameJp":"恋をしているみたいなの","songNameKor":"사랑을 하고 있는 것 같아","artistJp":"ユイカ","artistKor":"유이카","info":"ABEMA 오리지날 연애 프로그램 \"사랑하는 주말 홈스테이 2024 겨울\"의 삽입곡, 2024년 2월 6일 릴리즈 '사랑을 하고 있는 것 같아'","aVid":"p-LQcRVcxnA","bVid":"xX1lsxo3eKc"}
 
@@ -111,7 +113,7 @@ var info =
 
 ,{"videoId":"dlodmmh4XIE","name":"물방울","songNameJp":"しずく","songNameKor":"물방울","artistJp":"奥田美和子","artistKor":"오쿠다 미와코","info":"물방울(しずく)은 애니메이션 'GTO 반항하지 마'의 두 번째 클로징 테마이다. 18회부터 33회까지 방영되었다.","aVid":"K805UvkE6iQ","bVid":"CtQfysgQiKg"}
 
-,{"videoId":"wfCcs0vLysk","name":"인페르노","songNameJp":"インフェルノ","songNameKor":"인페르노","artistJp":"Mrs. GREEN APPLE","artistKor":"Mrs. GREEN APPLE","info":"インフェルノ(인페르노)는 Mrs. GREEN APPLE의 싱글 『インフェルノ』의 1번 트랙이자 타이틀 트랙이다. TV 애니메이션 불꽃 소방대의 오프닝 곡이다.","aVid":"TiZgx7PqR9o","bVid":"6oPp9lDRtJ4"}
+,{"videoId":"wfCcs0vLysk","name":"인페르노","songNameJp":"インフェルノ","songNameKor":"인페르노","artistJp":"Mrs. GREEN APPLE","artistKor":"미세스 그린 애플","info":"インフェルノ(인페르노)는 Mrs. GREEN APPLE의 싱글 『インフェルノ』의 1번 트랙이자 타이틀 트랙이다. TV 애니메이션 불꽃 소방대의 오프닝 곡이다.","aVid":"TiZgx7PqR9o","bVid":"6oPp9lDRtJ4"}
 
 ,{"videoId":"6elZkJtv0yM","name":"거짓말쟁이","songNameJp":"嘘月","songNameKor":"거짓말쟁이","artistJp":"ヨルシカ","artistKor":"요루시카","info":"애니메이션 영화 \"울고 싶은 나는 고양이 가면을 쓴다\"의 엔딩곡이며, 요루시카가 제작한 곡이다.\n영화 주제가인 \"꽃에 망령\" 다음으로 상당한 인기를 구가하였지만 싱글로 나오지 않아서, 이 곡도 따로 내줬으면 좋겠다는 리스너들의 의견이 많았다. 그래서 결국 3rd Mini Album 『창작』에 수록되었다.","aVid":"wAFSpbKIL9g","bVid":"4lJUWZpQiOs"}
 
